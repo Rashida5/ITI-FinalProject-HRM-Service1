@@ -11,6 +11,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class FinalGradService1Application {
 
     public static void main(String[] args) {
+
         SpringApplication.run(FinalGradService1Application.class, args);
     }
 
