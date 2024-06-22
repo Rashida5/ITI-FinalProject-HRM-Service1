@@ -23,9 +23,9 @@ public interface JobRepository extends JpaRepository<Job, Integer> {
             "GROUP BY j.jobId")
     List<Object[]> findJobEmployeeCounts();
 
-    @Query("SELECT e.employeeId as employeeId, e.firstName as firstName, e.lastName as lastName" +
-            "FROM Employee e " +
-            "JOIN e.job j " +
-            "WHERE j.jobTitle = :jobTitle")
-    List<Object[]> findEmployeesByJobName(@Param("jobTitle") String jobTitle);
+//    @Query("SELECT e.employeeId as employeeId, e.firstName as firstName, e.lastName as lastName" +
+//            "FROM Employee e " +
+//            "JOIN e.job j " +
+//            "WHERE j.jobTitle = :jobTitle")
+//    List<Object[]> findEmployeesByJobName(@Param("jobTitle") String jobTitle);
 }

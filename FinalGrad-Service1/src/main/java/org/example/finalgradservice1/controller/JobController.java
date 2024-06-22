@@ -70,9 +70,9 @@ public class JobController {
         return new ResponseEntity<>(jobEmployeeCounts, HttpStatus.OK);
     }
 
-    @GetMapping("/employees-by-job")
-    public ResponseEntity<List<EmployeeDto>> getEmployeesByJobName(@RequestParam String jobName) {
-        List<EmployeeDto> employeesByJobName = jobService.getEmployeesByJobName(jobName);
-        return new ResponseEntity<>(employeesByJobName, HttpStatus.OK);
-    }
+//    @GetMapping("/employees-by-job")
+//    public ResponseEntity<List<EmployeeDto>> getEmployeesByJobName(@RequestParam String jobName) {
+//        List<EmployeeDto> employeesByJobName = jobService.getEmployeesByJobName(jobName);
+//        return new ResponseEntity<>(employeesByJobName, HttpStatus.OK);
+//    }
 }

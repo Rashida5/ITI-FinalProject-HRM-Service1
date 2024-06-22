@@ -17,18 +17,18 @@ import org.springframework.stereotype.Component;
 @Mapper(componentModel = "spring", uses = {EntityMapperHelper.class})
 public interface EmployeeMapper {
 
-    @Mapping(source = "manager.employeeId", target = "managerId")
-    @Mapping(source = "job.jobId", target = "jobId")
-    @Mapping(source = "department.departmentId", target = "departmentId")
+//    @Mapping(source = "manager.employeeId", target = "managerId")
+//    @Mapping(source = "job.jobId", target = "jobId")
+//    @Mapping(source = "department.departmentId", target = "departmentId")
     EmployeeDto employeeToEmployeeDto(Employee employee);
 
-   @Mapping(source = "managerId", target = "manager", qualifiedByName = "idToEmployee")
-   @Mapping(source = "jobId", target = "job", qualifiedByName = "idToJob")
-   @Mapping(source = "departmentId", target = "department", qualifiedByName = "idToDepartment")
+//   @Mapping(source = "managerId", target = "manager", qualifiedByName = "idToEmployee")
+//   @Mapping(source = "jobId", target = "job", qualifiedByName = "idToJob")
+//   @Mapping(source = "departmentId", target = "department", qualifiedByName = "idToDepartment")
     Employee employeeDtoToEmployee(EmployeeDto employeeDto);
 
-    @Mapping(source = "jobId", target = "job", qualifiedByName = "idToJob")
-    @Mapping(source = "departmentId", target = "department", qualifiedByName = "idToDepartment")
+//    @Mapping(source = "jobId", target = "job", qualifiedByName = "idToJob")
+//    @Mapping(source = "departmentId", target = "department", qualifiedByName = "idToDepartment")
     void updateEmployeeFromDto(EmployeeDto employeeDto, @MappingTarget Employee employee);
 
 }

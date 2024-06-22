@@ -67,10 +67,10 @@ public class JobService {
                 .collect(Collectors.toList());
     }
 
-    public List<EmployeeDto> getEmployeesByJobName(String jobName) {
-        List<Object[]> employeesByJobName = jobRepository.findEmployeesByJobName(jobName);
-        return employeesByJobName.stream()
-                .map(jobMapper::mapToEmployeeDto)
-                .collect(Collectors.toList());
-    }
+//    public List<EmployeeDto> getEmployeesByJobName(String jobName) {
+//        List<Object[]> employeesByJobName = jobRepository.findEmployeesByJobName(jobName);
+//        return employeesByJobName.stream()
+//                .map(jobMapper::mapToEmployeeDto)
+//                .collect(Collectors.toList());
+//    }
 }
