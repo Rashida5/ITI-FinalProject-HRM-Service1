@@ -45,6 +45,10 @@ public class EmployeeDto {
     @NotNull(message = "Department ID is mandatory")
     private Integer departmentId;
 
+    private String departmentName;
+
+    private String jobTitle;
+
     public EmployeeDto() {
 
     }

@@ -10,33 +10,33 @@ import java.util.stream.Collectors;
 @Component
 public class DepartmentMapper {
 
-    public DepartmentDto toDTO(Department department) {
+    public  DepartmentDto toDTO(Department department) {
         DepartmentDto dto = new DepartmentDto();
         dto.setDepartmentId(department.getDepartmentId());
         dto.setDepartmentName(department.getDepartmentName());
         return dto;
     }
 
-    public Department toEntity(DepartmentDto dto) {
+    public  Department toEntity(DepartmentDto dto) {
         Department department = new Department();
         department.setDepartmentId(dto.getDepartmentId());
         department.setDepartmentName(dto.getDepartmentName());
         return department;
     }
 
-    public Set<DepartmentDto> toDTOSet(Set<Department> departments) {
+    public  Set<DepartmentDto> toDTOSet(Set<Department> departments) {
         return departments.stream()
                 .map(this::toDTO)
                 .collect(Collectors.toSet());
     }
 
-    public Set<Department> toEntitySet(Set<DepartmentDto> dtos) {
+    public  Set<Department> toEntitySet(Set<DepartmentDto> dtos) {
         return dtos.stream()
                 .map(this::toEntity)
                 .collect(Collectors.toSet());
     }
 
-    public Department updateEntityFromDto(DepartmentDto dto , Department department) {
+    public  Department updateEntityFromDto(DepartmentDto dto , Department department) {
         department.setDepartmentId(dto.getDepartmentId());
         department.setDepartmentName(dto.getDepartmentName());
         return department;

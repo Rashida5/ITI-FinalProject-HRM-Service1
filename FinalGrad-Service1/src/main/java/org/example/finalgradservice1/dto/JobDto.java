@@ -5,6 +5,9 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import org.hibernate.validator.constraints.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Data
 public class JobDto {
 
@@ -27,15 +30,22 @@ public class JobDto {
 
     private Long numberOfEmployees;
 
+    @NotNull(message = "Employee IDs cannot be null")
+    @UniqueElements(message = "Employee IDs must be unique")
+    private Set<Integer> employeeIds = new HashSet<>();
+
     // Constructors
     public JobDto() {
     }
 
-    public JobDto(Integer jobId, String jobTitle, Long minSalary, Long maxSalary , Boolean existed) {
+    public JobDto(Integer jobId, String jobTitle, Long minSalary, Long maxSalary , Boolean existed , Set<Integer> employeeIds) {
         this.jobId = jobId;
         this.jobTitle = jobTitle;
         this.minSalary = minSalary;
         this.maxSalary = maxSalary;
         this.existed = existed;
+        if (employeeIds != null) {
+            this.employeeIds.addAll(employeeIds);
+        }
     }
 }

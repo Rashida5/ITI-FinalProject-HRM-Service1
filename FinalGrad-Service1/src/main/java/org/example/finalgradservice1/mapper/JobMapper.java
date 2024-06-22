@@ -67,7 +67,7 @@ public class JobMapper {
 
 
         EmployeeDto employeeDto = new EmployeeDto();
-        employeeDto.setEmployeeId(employeeId);
+        //employeeDto.setEmployeeId(employeeId);
         employeeDto.setFirstName(firstName);
         employeeDto.setLastName(lastName);
 

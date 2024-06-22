@@ -35,14 +35,19 @@ public class EmployeeController {
     }
 
     @GetMapping("/{employeeId}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<EmployeeDto> getEmployee(@PathVariable Integer employeeId) {
         EmployeeDto employeeDto = employeeService.getEmployee(employeeId);
         return ResponseEntity.ok(employeeDto);
     }
 
     @GetMapping
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Page<EmployeeDto>> getEmployees(@RequestParam(defaultValue = "0") int page , @RequestParam(defaultValue = "10") int size){
         Page<EmployeeDto> employees = employeeService.getEmployees(page, size);
+//        for(EmployeeDto employeeDto:employees.getContent()){
+//            System.out.println(employeeDto.getEmployeeId());
+//        }
         return ResponseEntity.ok(employees);
     }
 

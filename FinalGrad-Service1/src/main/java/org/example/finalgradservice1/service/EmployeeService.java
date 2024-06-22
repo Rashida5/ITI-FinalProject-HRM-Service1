@@ -48,6 +48,9 @@ public class EmployeeService {
     public Page<EmployeeDto> getEmployees(int page, int size){
         Pageable pageable = PageRequest.of(page, size);
         Page<Employee> employeePage = employeeRepository.findAll(pageable);
+        for(Employee employee: employeePage.getContent()){
+            System.out.println(employee.getEmployeeId());
+        }
         return employeePage.map(employeeMapper::employeeToEmployeeDto);
     }
 

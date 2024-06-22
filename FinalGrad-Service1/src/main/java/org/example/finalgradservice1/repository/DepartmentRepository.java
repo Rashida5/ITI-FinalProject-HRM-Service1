@@ -22,4 +22,5 @@ public interface DepartmentRepository extends JpaRepository<Department,Integer> 
 
     @Query("SELECT e FROM Department d JOIN d.employees e WHERE d.departmentName = :departmentName AND d.existed = true")
     List<Employee> findEmployeesByDepartmentName(@Param("departmentName") String departmentName);
+
 }
