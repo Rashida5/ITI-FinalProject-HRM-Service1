@@ -29,17 +29,23 @@ public class Job {
     @OneToMany(mappedBy = "job")
     private Set<Employee> employees = new HashSet<>();
 
+    @Column(name = "existed", nullable = false)
+    private Boolean existed = true;
+
+    @Transient
+    private Long numberOfEmployees;
+
     // No-argument constructor
     public Job() {
 
     }
     // All-argument constructor
-    public Job(Integer jobId, String jobTitle, Long minSalary, Long maxSalary) {
+    public Job(Integer jobId, String jobTitle, Long minSalary, Long maxSalary , Boolean existed) {
         this.jobId = jobId;
         this.jobTitle = jobTitle;
         this.minSalary = minSalary;
         this.maxSalary = maxSalary;
-
+        this.existed = existed;
     }
 
     public void addEmployee (Employee employee){

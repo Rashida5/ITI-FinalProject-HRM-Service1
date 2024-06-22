@@ -55,7 +55,7 @@ public class DepartmentService {
     public boolean deleteDepartment(Integer id) {
         Department department = departmentRepository.findActiveById(id);
         if (department != null) {
-            department.setDeleted(false);
+            department.setExisted(false);
             departmentRepository.save(department);
             return true;
         }
@@ -73,4 +73,10 @@ public class DepartmentService {
         }
         return Page.empty();
     }
+
+    public List<Employee> getEmployeesByDepartmentName(String departmentName) {
+        return departmentRepository.findEmployeesByDepartmentName(departmentName);
+    }
+
+
 }

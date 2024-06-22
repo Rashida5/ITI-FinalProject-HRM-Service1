@@ -24,19 +24,19 @@ public class DepartmentDto {
     private Set<Integer> employeeIds = new HashSet<>();
 
     @NotNull(message = "Department name cannot be null")
-    private Boolean deleted = true;
+    private Boolean existed = true;
 
     // Constructors
     public DepartmentDto() {
     }
 
-    public DepartmentDto(Integer departmentId, String departmentName, Set<Integer> employeeIds , Boolean deleted) {
+    public DepartmentDto(Integer departmentId, String departmentName, Set<Integer> employeeIds , Boolean existed) {
         this.departmentId = departmentId;
         this.departmentName = departmentName;
         if (employeeIds != null) {
             this.employeeIds.addAll(employeeIds);
         }
-        this.deleted = deleted;
+        this.existed = existed;
     }
 
     public void addEmployeeId(Integer employeeId) {

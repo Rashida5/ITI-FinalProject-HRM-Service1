@@ -10,7 +10,7 @@ import java.util.Date;
 @Data
 public class EmployeeDto {
 
-
+    private Integer employeeId;
 
     @NotBlank(message = "First name is mandatory")
     @Size(min = 2, max = 20, message = "First name must be between 2 and 20 characters")

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -76,5 +77,15 @@ public class DepartmentController {
                                                                      @RequestParam(defaultValue = "5") int size) {
         Page<Employee> employees = departmentService.getEmployeesByDepartmentId(id, page, size);
         return new ResponseEntity<>(employees, HttpStatus.OK);
+    }
+
+    @GetMapping("/{departmentName}/employees")
+    public ResponseEntity<List<Employee>> getEmployeesByDepartmentName(@PathVariable String departmentName) {
+        List<Employee> employees = departmentService.getEmployeesByDepartmentName(departmentName);
+        if (!employees.isEmpty()) {
+            return new ResponseEntity<>(employees, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 }
