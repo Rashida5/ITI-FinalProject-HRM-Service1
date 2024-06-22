@@ -22,13 +22,17 @@ public class Department {
     @OneToMany(mappedBy = "department")
     private Set<Employee> employees = new HashSet<>();
 
+    @Column(name = "deleted", nullable = false)
+    private Boolean deleted = true;
+
     // No-argument constructor
     public Department() {}
 
     // All-argument constructor
-    public Department(Integer departmentId, String departmentName) {
+    public Department(Integer departmentId, String departmentName, Boolean deleted) {
         this.departmentId = departmentId;
         this.departmentName = departmentName;
+        this.deleted = deleted;
     }
 
     public void addEmployee (Employee employee){
