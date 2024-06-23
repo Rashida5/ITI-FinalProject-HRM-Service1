@@ -18,6 +18,7 @@ public class AddressController {
     private AddressService addressService;
 
     @GetMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<AddressDto> getAddressById(@PathVariable Integer id) {
         AddressDto addressDto = addressService.getAddressById(id);
         return addressDto != null ?
@@ -26,24 +27,28 @@ public class AddressController {
     }
 
     @GetMapping
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<List<AddressDto>> getAllAddresses() {
         List<AddressDto> addresses = addressService.getAllAddresses();
         return ResponseEntity.ok(addresses);
     }
 
     @PostMapping
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<String> saveAddress(@RequestBody AddressDto addressDto) {
         boolean saved = addressService.saveAddress(addressDto);
         return saved ? ResponseEntity.ok("Address saved successfully") : ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to save address");
     }
 
     @PutMapping
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<String> updateAddress(@RequestBody AddressDto addressDto) {
         boolean updated = addressService.updateAddress(addressDto);
         return updated ? ResponseEntity.ok("Address updated successfully") : ResponseEntity.status(HttpStatus.NOT_FOUND).body("Address not found");
     }
 
     @DeleteMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<String> deleteAddress(@PathVariable Integer id) {
         boolean deleted = addressService.deleteAddress(id);
         return deleted ? ResponseEntity.ok("Address deleted successfully") : ResponseEntity.status(HttpStatus.NOT_FOUND).body("Address not found");

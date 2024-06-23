@@ -23,6 +23,11 @@ public interface EmployeeMapper {
     @Mapping(source = "employeeId",target="employeeId")
     @Mapping(source = "department.departmentName",target ="departmentName")
     @Mapping(source = "job.jobTitle" , target ="jobTitle")
+    @Mapping(source="address.zipCode", target="zipCode")
+    @Mapping(source="address.street", target="street")
+    @Mapping(source="address.country", target="country")
+    @Mapping(source="address.city", target="city")
+    @Mapping(source="address.state", target="state")
     EmployeeDto employeeToEmployeeDto(Employee employee);
 
    @Mapping(source = "managerId", target = "manager", qualifiedByName = "idToEmployee")

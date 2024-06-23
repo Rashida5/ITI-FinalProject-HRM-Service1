@@ -9,6 +9,7 @@ import org.example.finalgradservice1.model.Employee;
 import org.example.finalgradservice1.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,8 +27,10 @@ public class EmployeeController {
     private EmployeeMapper employeeMapper;
 
     @PostMapping
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<String>saveEmployee(@Valid @RequestBody EmployeeDto employeeDto){
        boolean saved= employeeService.saveEmployee(employeeDto);
+       System.out.println(employeeDto);
        if(saved){
            return ResponseEntity.ok("Employee saved successfully");
        }
@@ -38,12 +41,14 @@ public class EmployeeController {
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<EmployeeDto> getEmployee(@PathVariable Integer employeeId) {
         EmployeeDto employeeDto = employeeService.getEmployee(employeeId);
+
         return ResponseEntity.ok(employeeDto);
     }
 
     @GetMapping
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Page<EmployeeDto>> getEmployees(@RequestParam(defaultValue = "0") int page , @RequestParam(defaultValue = "10") int size){
+
         Page<EmployeeDto> employees = employeeService.getEmployees(page, size);
 //        for(EmployeeDto employeeDto:employees.getContent()){
 //            System.out.println(employeeDto.getEmployeeId());
@@ -52,6 +57,7 @@ public class EmployeeController {
     }
 
     @PutMapping("/{employeeId}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<String>updateEmployee(@PathVariable Integer employeeId,@Valid @RequestBody EmployeeDto employeeDto){
         boolean updated = employeeService.updateEmployee(employeeDto, employeeId);
         if(updated){
@@ -61,6 +67,7 @@ public class EmployeeController {
         }
     }
     @DeleteMapping("/{employeeId}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<String> deleteEmployee(@PathVariable Integer employeeId){
         boolean deleted = employeeService.deleteEmployee(employeeId);
         if(deleted){
@@ -70,11 +77,13 @@ public class EmployeeController {
         }
     }
     @GetMapping("/manger/{employeeId}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<List<EmployeeDto>> getAllEmployeeOfManager(@PathVariable Integer employeeId){
         List<EmployeeDto> employeeDtoList = employeeService.getAllEmployeeManager(employeeId);
         return ResponseEntity.ok(employeeDtoList);
     }
     @GetMapping("/status/{statusId}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<List<EmployeeDto>> getEmployeeByStatus(@PathVariable Integer statusId){
         try {
             EmploymentStatus employmentStatus = EmploymentStatus.fromId(statusId);

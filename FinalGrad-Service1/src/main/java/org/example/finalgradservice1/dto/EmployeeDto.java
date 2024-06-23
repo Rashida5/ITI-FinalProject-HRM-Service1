@@ -48,7 +48,16 @@ public class EmployeeDto {
     private String departmentName;
 
     private String jobTitle;
-
+    @NotNull(message = "City is mandatory")
+    private String city;
+    @NotNull(message = "Zip Code is mandatory")
+    private String zipCode;
+    @NotNull(message = "State is mandatory")
+    private String state;
+    @NotNull(message = "Country is mandatory")
+    private String country;
+    @NotNull(message = "Street is mandatory")
+    private String street;
     public EmployeeDto() {
 
     }
@@ -64,5 +73,29 @@ public class EmployeeDto {
         this.managerId = managerId;
         this.jobId = jobId;
         this.departmentId = departmentId;
+    }
+
+    @Override
+    public String toString() {
+        return "EmployeeDto{" +
+                "employeeId=" + employeeId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", employmentStatus='" + employmentStatus + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", managerId=" + managerId +
+                ", jobId=" + jobId +
+                ", departmentId=" + departmentId +
+                ", departmentName='" + departmentName + '\'' +
+                ", jobTitle='" + jobTitle + '\'' +
+                ", city='" + city + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", state='" + state + '\'' +
+                ", country='" + country + '\'' +
+                ", street='" + street + '\'' +
+                '}';
     }
 }

@@ -18,6 +18,7 @@ public class JobController {
     private JobService jobService;
 
     @PostMapping
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<String> createJob(@RequestBody JobDto jobDto) {
         boolean isSaved = jobService.saveJob(jobDto);
         if (isSaved) {
@@ -28,6 +29,7 @@ public class JobController {
     }
 
     @GetMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<JobDto> getJobById(@PathVariable Integer id) {
         JobDto jobDto = jobService.getJobById(id);
         if (jobDto != null) {
@@ -38,12 +40,14 @@ public class JobController {
     }
 
     @GetMapping
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Set<JobDto>> getAllJobs() {
         Set<JobDto> jobs = jobService.getAllJobs();
         return new ResponseEntity<>(jobs, HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<String> updateJob(@PathVariable Integer id, @RequestBody JobDto jobDto) {
         jobDto.setJobId(id);
         boolean isUpdated = jobService.updateJob(jobDto);
@@ -55,6 +59,7 @@ public class JobController {
     }
 
     @DeleteMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<String> deleteJob(@PathVariable Integer id) {
         boolean isDeleted = jobService.deleteJob(id);
         if (isDeleted) {
@@ -65,6 +70,7 @@ public class JobController {
     }
 
     @GetMapping("/employee-counts")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<List<JobDto>> getJobEmployeeCounts() {
         List<JobDto> jobEmployeeCounts = jobService.getJobEmployeeCounts();
         return new ResponseEntity<>(jobEmployeeCounts, HttpStatus.OK);

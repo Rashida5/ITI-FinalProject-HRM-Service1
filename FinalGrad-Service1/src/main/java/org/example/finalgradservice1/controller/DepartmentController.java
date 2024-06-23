@@ -35,6 +35,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<DepartmentDto> getDepartmentById(@PathVariable Integer id) {
         DepartmentDto departmentDto = departmentService.getDepartmentById(id);
         if (departmentDto != null) {
@@ -45,12 +46,14 @@ public class DepartmentController {
     }
 
     @GetMapping
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Set<DepartmentDto>> getAllDepartments() {
         Set<DepartmentDto> departments = departmentService.getAllDepartments();
         return new ResponseEntity<>(departments, HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<String> updateDepartment(@PathVariable Integer id, @RequestBody DepartmentDto departmentDto) {
         departmentDto.setDepartmentId(id);
         boolean isUpdated = departmentService.updateDepartment(departmentDto);
@@ -62,6 +65,7 @@ public class DepartmentController {
     }
 
     @DeleteMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<String> deleteDepartment(@PathVariable Integer id) {
         boolean isDeleted = departmentService.deleteDepartment(id);
         if (isDeleted) {
@@ -72,6 +76,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/{id}/employees")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Page<Employee>> getEmployeesByDepartmentId(@PathVariable Integer id,
                                                                      @RequestParam(defaultValue = "0") int page,
                                                                      @RequestParam(defaultValue = "5") int size) {
@@ -80,6 +85,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/{departmentName}/employees")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<List<Employee>> getEmployeesByDepartmentName(@PathVariable String departmentName) {
         List<Employee> employees = departmentService.getEmployeesByDepartmentName(departmentName);
         if (!employees.isEmpty()) {
