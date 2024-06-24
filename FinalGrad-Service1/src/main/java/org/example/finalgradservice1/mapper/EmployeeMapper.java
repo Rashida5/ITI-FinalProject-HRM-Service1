@@ -17,26 +17,26 @@ import org.springframework.stereotype.Component;
 @Mapper(componentModel = "spring", uses = {EntityMapperHelper.class})
 public interface EmployeeMapper {
 
-//    @Mapping(source = "manager.employeeId", target = "managerId")
-//    @Mapping(source = "job.jobId", target = "jobId")
-//    @Mapping(source = "department.departmentId", target = "departmentId")
-//    @Mapping(source = "employeeId",target="employeeId")
-//    @Mapping(source = "department.departmentName",target ="departmentName")
-//    @Mapping(source = "job.jobTitle" , target ="jobTitle")
-//    @Mapping(source="address.zipCode", target="zipCode")
-//    @Mapping(source="address.street", target="street")
-//    @Mapping(source="address.country", target="country")
-//    @Mapping(source="address.city", target="city")
-//    @Mapping(source="address.state", target="state")
+    @Mapping(source = "manager.employeeId", target = "managerId")
+    @Mapping(source = "job.jobId", target = "jobId")
+    @Mapping(source = "department.departmentId", target = "departmentId")
+    @Mapping(source = "employeeId",target="employeeId")
+    @Mapping(source = "department.departmentName",target ="departmentName")
+    @Mapping(source = "job.jobTitle" , target ="jobTitle")
+    @Mapping(source="address.zipCode", target="zipCode")
+    @Mapping(source="address.street", target="street")
+    @Mapping(source="address.country", target="country")
+    @Mapping(source="address.city", target="city")
+    @Mapping(source="address.state", target="state")
     EmployeeDto employeeToEmployeeDto(Employee employee);
 
-//   @Mapping(source = "managerId", target = "manager", qualifiedByName = "idToEmployee")
-//   @Mapping(source = "jobId", target = "job", qualifiedByName = "idToJob")
-//   @Mapping(source = "departmentId", target = "department", qualifiedByName = "idToDepartment")
+   @Mapping(source = "managerId", target = "manager", qualifiedByName = "idToEmployee")
+   @Mapping(source = "jobId", target = "job", qualifiedByName = "idToJob")
+   @Mapping(source = "departmentId", target = "department", qualifiedByName = "idToDepartment")
     Employee employeeDtoToEmployee(EmployeeDto employeeDto);
 
-//    @Mapping(source = "jobId", target = "job", qualifiedByName = "idToJob")
-//    @Mapping(source = "departmentId", target = "department", qualifiedByName = "idToDepartment")
+    @Mapping(source = "jobId", target = "job", qualifiedByName = "idToJob")
+    @Mapping(source = "departmentId", target = "department", qualifiedByName = "idToDepartment")
     void updateEmployeeFromDto(EmployeeDto employeeDto, @MappingTarget Employee employee);
 
 }

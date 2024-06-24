@@ -18,6 +18,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/employees")
+//@CrossOrigin(allowedHeaders ={"*"},
+//        methods = {RequestMethod.POST,RequestMethod.DELETE,RequestMethod.GET,RequestMethod.PATCH,RequestMethod.PUT},
+//        origins = {"*"}
+//)
+//@CrossOrigin(origins = "http://localhost:4200",
+//        methods = {RequestMethod.POST,RequestMethod.DELETE,RequestMethod.GET,RequestMethod.PATCH,RequestMethod.PUT, RequestMethod.OPTIONS}
+//)
 public class EmployeeController {
 
     @Autowired
@@ -27,7 +34,7 @@ public class EmployeeController {
     private EmployeeMapper employeeMapper;
 
     @PostMapping
-    @CrossOrigin(origins = "http://localhost:4200")
+    //@CrossOrigin(origins = "*" )
     public ResponseEntity<String>saveEmployee(@Valid @RequestBody EmployeeDto employeeDto){
        boolean saved= employeeService.saveEmployee(employeeDto);
        System.out.println(employeeDto);
@@ -38,7 +45,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/{employeeId}")
-    @CrossOrigin(origins = "http://localhost:4200")
+    //@CrossOrigin(origins = "*")
     public ResponseEntity<EmployeeDto> getEmployee(@PathVariable Integer employeeId) {
         EmployeeDto employeeDto = employeeService.getEmployee(employeeId);
 
@@ -46,7 +53,7 @@ public class EmployeeController {
     }
 
     @GetMapping
-    @CrossOrigin(origins = "http://localhost:4200")
+   // @CrossOrigin(origins = "*")
     public ResponseEntity<Page<EmployeeDto>> getEmployees(@RequestParam(defaultValue = "0") int page , @RequestParam(defaultValue = "10") int size){
 
         Page<EmployeeDto> employees = employeeService.getEmployees(page, size);
@@ -57,7 +64,7 @@ public class EmployeeController {
     }
 
     @PutMapping("/{employeeId}")
-    @CrossOrigin(origins = "http://localhost:4200")
+    //@CrossOrigin(origins = "*")
     public ResponseEntity<String>updateEmployee(@PathVariable Integer employeeId,@Valid @RequestBody EmployeeDto employeeDto){
         boolean updated = employeeService.updateEmployee(employeeDto, employeeId);
         if(updated){
@@ -67,7 +74,7 @@ public class EmployeeController {
         }
     }
     @DeleteMapping("/{employeeId}")
-    @CrossOrigin(origins = "http://localhost:4200")
+    //@CrossOrigin(origins = "*")
     public ResponseEntity<String> deleteEmployee(@PathVariable Integer employeeId){
         boolean deleted = employeeService.deleteEmployee(employeeId);
         if(deleted){
@@ -77,13 +84,13 @@ public class EmployeeController {
         }
     }
     @GetMapping("/manger/{employeeId}")
-    @CrossOrigin(origins = "http://localhost:4200")
+    //@CrossOrigin(origins = "*")
     public ResponseEntity<List<EmployeeDto>> getAllEmployeeOfManager(@PathVariable Integer employeeId){
         List<EmployeeDto> employeeDtoList = employeeService.getAllEmployeeManager(employeeId);
         return ResponseEntity.ok(employeeDtoList);
     }
     @GetMapping("/status/{statusId}")
-    @CrossOrigin(origins = "http://localhost:4200")
+    //@CrossOrigin(origins = "*")
     public ResponseEntity<List<EmployeeDto>> getEmployeeByStatus(@PathVariable Integer statusId){
         try {
             EmploymentStatus employmentStatus = EmploymentStatus.fromId(statusId);
