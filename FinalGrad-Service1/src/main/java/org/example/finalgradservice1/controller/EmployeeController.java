@@ -27,7 +27,7 @@ public class EmployeeController {
     private EmployeeMapper employeeMapper;
 
     @PostMapping
-    @CrossOrigin(origins = "http://localhost:4200")
+//    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<String>saveEmployee(@Valid @RequestBody EmployeeDto employeeDto){
        boolean saved= employeeService.saveEmployee(employeeDto);
        System.out.println(employeeDto);
@@ -46,7 +46,7 @@ public class EmployeeController {
     }
 
     @GetMapping
-    @CrossOrigin(origins = "http://localhost:4200")
+//    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Page<EmployeeDto>> getEmployees(@RequestParam(defaultValue = "0") int page , @RequestParam(defaultValue = "10") int size){
 
         Page<EmployeeDto> employees = employeeService.getEmployees(page, size);
