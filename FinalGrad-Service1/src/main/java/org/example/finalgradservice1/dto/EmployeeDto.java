@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Date;
 @Data
 public class EmployeeDto {
@@ -58,6 +59,12 @@ public class EmployeeDto {
     private String country;
     @NotNull(message = "Street is mandatory")
     private String street;
+
+   // @NotNull(message = "Net Salary is mandatory")
+//    private Integer netSalary;
+
+    private BigDecimal currentSalary;
+
     public EmployeeDto() {
 
     }

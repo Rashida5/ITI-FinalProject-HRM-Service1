@@ -32,7 +32,7 @@ public class EmployeeService {
 
     @Autowired
     private AddressMapper addressMapper;
-    public boolean saveEmployee(EmployeeDto employeeDto){
+    public EmployeeDto saveEmployee(EmployeeDto employeeDto){
 
         Employee employee = employeeMapper.employeeDtoToEmployee(employeeDto);
         System.out.println("Mapped Employee: "+employee);
@@ -48,7 +48,7 @@ public class EmployeeService {
        Address savedAddress= addressRepository.save(address);
         //employee.setAddress();
         if(savedAddress==null||savedAddress.getAddressId()==null)
-            return false;
+            return null;
 
         employee.setAddress(savedAddress);
         Employee savedEmployee = employeeRepository.save(employee);
@@ -56,10 +56,10 @@ public class EmployeeService {
         if(savedEmployee!=null && savedEmployee.getEmployeeId() > 0){
             System.out.println("employee saved successfully");
             //need to add address of employee
-
-            return true;
+            employeeDto.setEmployeeId(savedEmployee.getEmployeeId());
+            return employeeDto;
         }else{
-            return false;
+            return null;
         }
     }
     public EmployeeDto getEmployee(int employeeId){
