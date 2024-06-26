@@ -50,7 +50,7 @@ public class EmployeeController {
            salaryDto.setAmount(saved.getCurrentSalary());
            RestTemplate restTemplate = new RestTemplate();
            String requestUrl
-                   = "http://localhost:8222/api/v1/vacations/salary";
+                   = "http://localhost:8070/api/v1/vacations/salary";
            HttpEntity<SalaryDto> request = new HttpEntity<>(salaryDto);
            ResponseEntity<SalaryDto> response
                    = restTemplate.postForEntity(requestUrl, request,SalaryDto.class);
@@ -81,13 +81,15 @@ public class EmployeeController {
 
         RestTemplate restTemplate = new RestTemplate();
         String fooResourceUrl
-                = "http://localhost:8222/api/v1/vacations/salary";
+                = "http://localhost:8070/api/v1/vacations/salary";
         String requestUrl = fooResourceUrl + "/" + employeeId;
         ResponseEntity<SalaryDto> response
                 = restTemplate.getForEntity(requestUrl, SalaryDto.class);
-
         if(response.getBody()!=null && response.getBody().getAmount()!=null){
+            System.out.println("salary is "+ response.getBody().getAmount());
             employeeDto.setCurrentSalary(response.getBody().getAmount());
+        }else{
+            System.out.println("error while getting salary from vacation");
         }
 
         return ResponseEntity.ok(employeeDto);
@@ -117,7 +119,7 @@ public class EmployeeController {
                 RestTemplate restTemplate = new RestTemplate();
                 System.out.println(employeeDto.getCurrentSalary());
                 String requestUrl
-                        = "http://localhost:8222/api/v1/vacations/salary/"+employeeId;
+                        = "http://localhost:8070/api/v1/vacations/salary/"+employeeId;
 
                 HttpEntity<SalaryDto> request = new HttpEntity<>(salaryDto);
                // HttpEntity<?> request = new HttpEntity<>(null);
